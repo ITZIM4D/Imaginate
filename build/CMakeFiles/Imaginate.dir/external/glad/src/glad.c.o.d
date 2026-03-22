@@ -1,5 +1,5 @@
-CMakeFiles/myGameEngine.dir/external/glad/src/glad.c.o: \
-  /Users/jared/Desktop/MyGameEngine/external/glad/src/glad.c \
+CMakeFiles/Imaginate.dir/external/glad/src/glad.c.o: \
+  /Users/jared/Desktop/Imaginate/external/glad/src/glad.c \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/stdio.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/_stdio.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/_bounds.h \
@@ -92,7 +92,7 @@ CMakeFiles/myGameEngine.dir/external/glad/src/glad.c.o: \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/_strings.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/secure/_strings.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/secure/_string.h \
-  /Users/jared/Desktop/MyGameEngine/external/glad/include/glad/glad.h \
-  /Users/jared/Desktop/MyGameEngine/external/glad/include/KHR/khrplatform.h \
+  /Users/jared/Desktop/Imaginate/external/glad/include/glad/glad.h \
+  /Users/jared/Desktop/Imaginate/external/glad/include/KHR/khrplatform.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/dlfcn.h \
   /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/17/include/stdbool.h

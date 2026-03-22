@@ -54,20 +54,20 @@ RM = /opt/homebrew/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/jared/Desktop/MyGameEngine
+CMAKE_SOURCE_DIR = /Users/jared/Desktop/Imaginate
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/jared/Desktop/MyGameEngine/build
+CMAKE_BINARY_DIR = /Users/jared/Desktop/Imaginate/build
 
 #=============================================================================
 # Directory level rules for the build root directory
 
 # The main recursive "all" target.
-all: CMakeFiles/myGameEngine.dir/all
+all: CMakeFiles/Imaginate.dir/all
 .PHONY : all
 
 # The main recursive "codegen" target.
-codegen: CMakeFiles/myGameEngine.dir/codegen
+codegen: CMakeFiles/Imaginate.dir/codegen
 .PHONY : codegen
 
 # The main recursive "preinstall" target.
@@ -75,40 +75,40 @@ preinstall:
 .PHONY : preinstall
 
 # The main recursive "clean" target.
-clean: CMakeFiles/myGameEngine.dir/clean
+clean: CMakeFiles/Imaginate.dir/clean
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target CMakeFiles/myGameEngine.dir
+# Target rules for target CMakeFiles/Imaginate.dir
 
 # All Build rule for target.
-CMakeFiles/myGameEngine.dir/all:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/myGameEngine.dir/build.make CMakeFiles/myGameEngine.dir/depend
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/myGameEngine.dir/build.make CMakeFiles/myGameEngine.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/jared/Desktop/MyGameEngine/build/CMakeFiles --progress-num=1,2,3,4,5 "Built target myGameEngine"
-.PHONY : CMakeFiles/myGameEngine.dir/all
+CMakeFiles/Imaginate.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Imaginate.dir/build.make CMakeFiles/Imaginate.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Imaginate.dir/build.make CMakeFiles/Imaginate.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/jared/Desktop/Imaginate/build/CMakeFiles --progress-num=1,2,3,4,5,6 "Built target Imaginate"
+.PHONY : CMakeFiles/Imaginate.dir/all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/myGameEngine.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/jared/Desktop/MyGameEngine/build/CMakeFiles 5
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/myGameEngine.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/jared/Desktop/MyGameEngine/build/CMakeFiles 0
-.PHONY : CMakeFiles/myGameEngine.dir/rule
+CMakeFiles/Imaginate.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/jared/Desktop/Imaginate/build/CMakeFiles 6
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/Imaginate.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/jared/Desktop/Imaginate/build/CMakeFiles 0
+.PHONY : CMakeFiles/Imaginate.dir/rule
 
 # Convenience name for target.
-myGameEngine: CMakeFiles/myGameEngine.dir/rule
-.PHONY : myGameEngine
+Imaginate: CMakeFiles/Imaginate.dir/rule
+.PHONY : Imaginate
 
 # codegen rule for target.
-CMakeFiles/myGameEngine.dir/codegen:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/myGameEngine.dir/build.make CMakeFiles/myGameEngine.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/jared/Desktop/MyGameEngine/build/CMakeFiles --progress-num=1,2,3,4,5 "Finished codegen for target myGameEngine"
-.PHONY : CMakeFiles/myGameEngine.dir/codegen
+CMakeFiles/Imaginate.dir/codegen:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Imaginate.dir/build.make CMakeFiles/Imaginate.dir/codegen
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/jared/Desktop/Imaginate/build/CMakeFiles --progress-num=1,2,3,4,5,6 "Finished codegen for target Imaginate"
+.PHONY : CMakeFiles/Imaginate.dir/codegen
 
 # clean rule for target.
-CMakeFiles/myGameEngine.dir/clean:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/myGameEngine.dir/build.make CMakeFiles/myGameEngine.dir/clean
-.PHONY : CMakeFiles/myGameEngine.dir/clean
+CMakeFiles/Imaginate.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Imaginate.dir/build.make CMakeFiles/Imaginate.dir/clean
+.PHONY : CMakeFiles/Imaginate.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

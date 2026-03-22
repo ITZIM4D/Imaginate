@@ -1,8 +1,8 @@
-CMakeFiles/myGameEngine.dir/src/Window.cpp.o: \
-  /Users/jared/Desktop/MyGameEngine/src/Window.cpp \
-  /Users/jared/Desktop/MyGameEngine/include/Window.h \
-  /Users/jared/Desktop/MyGameEngine/external/glad/include/glad/glad.h \
-  /Users/jared/Desktop/MyGameEngine/external/glad/include/KHR/khrplatform.h \
+CMakeFiles/Imaginate.dir/src/Window.cpp.o: \
+  /Users/jared/Desktop/Imaginate/src/Window.cpp \
+  /Users/jared/Desktop/Imaginate/include/Window.h \
+  /Users/jared/Desktop/Imaginate/external/glad/include/glad/glad.h \
+  /Users/jared/Desktop/Imaginate/external/glad/include/KHR/khrplatform.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/stdint.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__config \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__config_site \
@@ -33,7 +33,7 @@ CMakeFiles/myGameEngine.dir/src/Window.cpp.o: \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/sys/_types/_uintptr_t.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/_types/_intmax_t.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/_types/_uintmax_t.h \
-  /Users/jared/Desktop/MyGameEngine/external/glfw/include/GLFW/glfw3.h \
+  /Users/jared/Desktop/Imaginate/external/glfw/include/GLFW/glfw3.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/stddef.h \
   /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/17/include/stddef.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/stddef.h \

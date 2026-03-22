@@ -1,11 +1,12 @@
 cmake_minimum_required(VERSION 4.0.0)
-project(myGameEngine)
+project(Imaginate)
 
-add_executable(myGameEngine
+add_executable(Imaginate
     src/main.cpp
     src/Window.cpp
     external/glad/src/glad.c
     src/ImageLoader.cpp
+    src/GameObject.cpp
 )
 
 include_directories(
@@ -17,12 +18,12 @@ include_directories(
 )
 
 target_link_directories(
-    myGameEngine PRIVATE 
+    Imaginate PRIVATE 
     external/glfw/lib-universal
     external/assimp/build/bin
 )
 
-target_link_libraries(myGameEngine PRIVATE
+target_link_libraries(Imaginate PRIVATE
     glfw3
     assimp
     "-framework Cocoa"

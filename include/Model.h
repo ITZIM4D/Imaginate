@@ -16,7 +16,7 @@ GLuint TextureFromFile(const char *path, const std::string &directory, bool gamm
 
 class Model {
     public:
-        Model(char* path) {
+        Model(const char* path) {
             loadModel(path);
         }
         void Draw(Shader &shader) {
@@ -30,6 +30,9 @@ class Model {
         std::string directory;
         std::vector<Texture> textures_loaded;
 
+        /**
+         * @brief Reads the file from the path and calls process node on the root
+         */
         void loadModel(std::string path) {
             Assimp::Importer import;
             const aiScene* scene = import.ReadFile(path, aiProcess_Triangulate | aiProcess_FlipUVs);
@@ -43,6 +46,9 @@ class Model {
             processNode(scene->mRootNode, scene);
         }
 
+        /**
+         * @brief Adds each node and it's children to the meshes vector recursively
+         */
         void processNode(aiNode *node, const aiScene *scene) {
             for (GLuint i = 0; i < node->mNumMeshes; i++) {
                 aiMesh* mesh = scene->mMeshes[node->mMeshes[i]];
@@ -54,6 +60,9 @@ class Model {
             }
         }
 
+        /**
+         * @brief Creates and returns a mesh object of the imported mesh
+         */
         Mesh processMesh(aiMesh *mesh, const aiScene *scene) {
             std::vector<Vertex> vertices;
             std::vector<GLuint> indices;
@@ -96,6 +105,11 @@ class Model {
 
             aiMaterial* material = scene->mMaterials[mesh->mMaterialIndex];
 
+            aiColor3D color(1.0f, 1.0f, 1.0f);
+            material->Get(AI_MATKEY_COLOR_DIFFUSE, color);
+
+            glm::vec3 diffuseColor(color.r, color.g, color.b);
+
             // 1. diffuse maps
             std::vector<Texture> diffuseMaps = loadMaterialTextures(material, aiTextureType_DIFFUSE, "texture_diffuse");
             textures.insert(textures.end(), diffuseMaps.begin(), diffuseMaps.end());
@@ -109,7 +123,7 @@ class Model {
             std::vector<Texture> heightMaps = loadMaterialTextures(material, aiTextureType_AMBIENT, "texture_height");
             textures.insert(textures.end(), heightMaps.begin(), heightMaps.end());
             
-            return Mesh(vertices, indices, textures);
+            return Mesh(vertices, indices, textures, diffuseColor);
         }
 
         std::vector<Texture> loadMaterialTextures(aiMaterial *mat, aiTextureType type, std::string typeName) {
@@ -138,7 +152,7 @@ class Model {
         }
 };
 
-unsigned int TextureFromFile(const char *path, const std::string &directory, bool gamma) {
+inline unsigned int TextureFromFile(const char *path, const std::string &directory, bool gamma) {
     std::string filename = std::string(path);
     filename = directory + '/' + filename;
 

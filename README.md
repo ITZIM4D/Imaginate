@@ -1,4 +1,4 @@
-# My Game Engine
+# Imaginate
 This project is a basic game engine that I want to create my own games on and build off of. Currently written only for Mac but going to be create windows implementation in the future.
 
 ## Table of Contents

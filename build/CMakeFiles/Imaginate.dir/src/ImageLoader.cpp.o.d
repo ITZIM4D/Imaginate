@@ -1,6 +1,6 @@
-CMakeFiles/myGameEngine.dir/src/ImageLoader.cpp.o: \
-  /Users/jared/Desktop/MyGameEngine/src/ImageLoader.cpp \
-  /Users/jared/Desktop/MyGameEngine/include/stb_image.h \
+CMakeFiles/Imaginate.dir/src/ImageLoader.cpp.o: \
+  /Users/jared/Desktop/Imaginate/src/ImageLoader.cpp \
+  /Users/jared/Desktop/Imaginate/include/stb_image.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/stdio.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__config \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__config_site \
@@ -237,4 +237,5 @@ CMakeFiles/myGameEngine.dir/src/ImageLoader.cpp.o: \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__math/traits.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__math/trigonometric_functions.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/assert.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/_assert.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/_static_assert.h

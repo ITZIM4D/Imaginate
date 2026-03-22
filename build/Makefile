@@ -57,10 +57,10 @@ RM = /opt/homebrew/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/jared/Desktop/MyGameEngine
+CMAKE_SOURCE_DIR = /Users/jared/Desktop/Imaginate
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/jared/Desktop/MyGameEngine/build
+CMAKE_BINARY_DIR = /Users/jared/Desktop/Imaginate/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -87,16 +87,16 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/jared/Desktop/MyGameEngine/build/CMakeFiles /Users/jared/Desktop/MyGameEngine/build//CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/jared/Desktop/Imaginate/build/CMakeFiles /Users/jared/Desktop/Imaginate/build//CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/jared/Desktop/MyGameEngine/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/jared/Desktop/Imaginate/build/CMakeFiles 0
 .PHONY : all
 
 # The main codegen target
 codegen: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/jared/Desktop/MyGameEngine/build/CMakeFiles /Users/jared/Desktop/MyGameEngine/build//CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/jared/Desktop/Imaginate/build/CMakeFiles /Users/jared/Desktop/Imaginate/build//CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 codegen
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/jared/Desktop/MyGameEngine/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/jared/Desktop/Imaginate/build/CMakeFiles 0
 .PHONY : codegen
 
 # The main clean target
@@ -124,24 +124,24 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named myGameEngine
+# Target rules for targets named Imaginate
 
 # Build rule for target.
-myGameEngine: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 myGameEngine
-.PHONY : myGameEngine
+Imaginate: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 Imaginate
+.PHONY : Imaginate
 
 # fast build rule for target.
-myGameEngine/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/myGameEngine.dir/build.make CMakeFiles/myGameEngine.dir/build
-.PHONY : myGameEngine/fast
+Imaginate/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Imaginate.dir/build.make CMakeFiles/Imaginate.dir/build
+.PHONY : Imaginate/fast
 
 external/glad/src/glad.o: external/glad/src/glad.c.o
 .PHONY : external/glad/src/glad.o
 
 # target to build an object file
 external/glad/src/glad.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/myGameEngine.dir/build.make CMakeFiles/myGameEngine.dir/external/glad/src/glad.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Imaginate.dir/build.make CMakeFiles/Imaginate.dir/external/glad/src/glad.c.o
 .PHONY : external/glad/src/glad.c.o
 
 external/glad/src/glad.i: external/glad/src/glad.c.i
@@ -149,7 +149,7 @@ external/glad/src/glad.i: external/glad/src/glad.c.i
 
 # target to preprocess a source file
 external/glad/src/glad.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/myGameEngine.dir/build.make CMakeFiles/myGameEngine.dir/external/glad/src/glad.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Imaginate.dir/build.make CMakeFiles/Imaginate.dir/external/glad/src/glad.c.i
 .PHONY : external/glad/src/glad.c.i
 
 external/glad/src/glad.s: external/glad/src/glad.c.s
@@ -157,15 +157,39 @@ external/glad/src/glad.s: external/glad/src/glad.c.s
 
 # target to generate assembly for a file
 external/glad/src/glad.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/myGameEngine.dir/build.make CMakeFiles/myGameEngine.dir/external/glad/src/glad.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Imaginate.dir/build.make CMakeFiles/Imaginate.dir/external/glad/src/glad.c.s
 .PHONY : external/glad/src/glad.c.s
+
+src/GameObject.o: src/GameObject.cpp.o
+.PHONY : src/GameObject.o
+
+# target to build an object file
+src/GameObject.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Imaginate.dir/build.make CMakeFiles/Imaginate.dir/src/GameObject.cpp.o
+.PHONY : src/GameObject.cpp.o
+
+src/GameObject.i: src/GameObject.cpp.i
+.PHONY : src/GameObject.i
+
+# target to preprocess a source file
+src/GameObject.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Imaginate.dir/build.make CMakeFiles/Imaginate.dir/src/GameObject.cpp.i
+.PHONY : src/GameObject.cpp.i
+
+src/GameObject.s: src/GameObject.cpp.s
+.PHONY : src/GameObject.s
+
+# target to generate assembly for a file
+src/GameObject.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Imaginate.dir/build.make CMakeFiles/Imaginate.dir/src/GameObject.cpp.s
+.PHONY : src/GameObject.cpp.s
 
 src/ImageLoader.o: src/ImageLoader.cpp.o
 .PHONY : src/ImageLoader.o
 
 # target to build an object file
 src/ImageLoader.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/myGameEngine.dir/build.make CMakeFiles/myGameEngine.dir/src/ImageLoader.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Imaginate.dir/build.make CMakeFiles/Imaginate.dir/src/ImageLoader.cpp.o
 .PHONY : src/ImageLoader.cpp.o
 
 src/ImageLoader.i: src/ImageLoader.cpp.i
@@ -173,7 +197,7 @@ src/ImageLoader.i: src/ImageLoader.cpp.i
 
 # target to preprocess a source file
 src/ImageLoader.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/myGameEngine.dir/build.make CMakeFiles/myGameEngine.dir/src/ImageLoader.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Imaginate.dir/build.make CMakeFiles/Imaginate.dir/src/ImageLoader.cpp.i
 .PHONY : src/ImageLoader.cpp.i
 
 src/ImageLoader.s: src/ImageLoader.cpp.s
@@ -181,7 +205,7 @@ src/ImageLoader.s: src/ImageLoader.cpp.s
 
 # target to generate assembly for a file
 src/ImageLoader.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/myGameEngine.dir/build.make CMakeFiles/myGameEngine.dir/src/ImageLoader.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Imaginate.dir/build.make CMakeFiles/Imaginate.dir/src/ImageLoader.cpp.s
 .PHONY : src/ImageLoader.cpp.s
 
 src/Window.o: src/Window.cpp.o
@@ -189,7 +213,7 @@ src/Window.o: src/Window.cpp.o
 
 # target to build an object file
 src/Window.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/myGameEngine.dir/build.make CMakeFiles/myGameEngine.dir/src/Window.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Imaginate.dir/build.make CMakeFiles/Imaginate.dir/src/Window.cpp.o
 .PHONY : src/Window.cpp.o
 
 src/Window.i: src/Window.cpp.i
@@ -197,7 +221,7 @@ src/Window.i: src/Window.cpp.i
 
 # target to preprocess a source file
 src/Window.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/myGameEngine.dir/build.make CMakeFiles/myGameEngine.dir/src/Window.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Imaginate.dir/build.make CMakeFiles/Imaginate.dir/src/Window.cpp.i
 .PHONY : src/Window.cpp.i
 
 src/Window.s: src/Window.cpp.s
@@ -205,7 +229,7 @@ src/Window.s: src/Window.cpp.s
 
 # target to generate assembly for a file
 src/Window.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/myGameEngine.dir/build.make CMakeFiles/myGameEngine.dir/src/Window.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Imaginate.dir/build.make CMakeFiles/Imaginate.dir/src/Window.cpp.s
 .PHONY : src/Window.cpp.s
 
 src/main.o: src/main.cpp.o
@@ -213,7 +237,7 @@ src/main.o: src/main.cpp.o
 
 # target to build an object file
 src/main.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/myGameEngine.dir/build.make CMakeFiles/myGameEngine.dir/src/main.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Imaginate.dir/build.make CMakeFiles/Imaginate.dir/src/main.cpp.o
 .PHONY : src/main.cpp.o
 
 src/main.i: src/main.cpp.i
@@ -221,7 +245,7 @@ src/main.i: src/main.cpp.i
 
 # target to preprocess a source file
 src/main.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/myGameEngine.dir/build.make CMakeFiles/myGameEngine.dir/src/main.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Imaginate.dir/build.make CMakeFiles/Imaginate.dir/src/main.cpp.i
 .PHONY : src/main.cpp.i
 
 src/main.s: src/main.cpp.s
@@ -229,7 +253,7 @@ src/main.s: src/main.cpp.s
 
 # target to generate assembly for a file
 src/main.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/myGameEngine.dir/build.make CMakeFiles/myGameEngine.dir/src/main.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Imaginate.dir/build.make CMakeFiles/Imaginate.dir/src/main.cpp.s
 .PHONY : src/main.cpp.s
 
 # Help Target
@@ -241,10 +265,13 @@ help:
 	@echo "... codegen"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... myGameEngine"
+	@echo "... Imaginate"
 	@echo "... external/glad/src/glad.o"
 	@echo "... external/glad/src/glad.i"
 	@echo "... external/glad/src/glad.s"
+	@echo "... src/GameObject.o"
+	@echo "... src/GameObject.i"
+	@echo "... src/GameObject.s"
 	@echo "... src/ImageLoader.o"
 	@echo "... src/ImageLoader.i"
 	@echo "... src/ImageLoader.s"

@@ -26,18 +26,20 @@ class Mesh {
         std::vector<GLuint> indices;
         std::vector<Texture> textures;
 
-        Mesh(std::vector<Vertex> vertices, std::vector<GLuint> indices, std::vector<Texture> textures) {
+        glm::vec3 diffuseColor;
+
+        Mesh(std::vector<Vertex> vertices, std::vector<GLuint> indices, std::vector<Texture> textures, glm::vec3 diffuseColor) {
             this->vertices = vertices;
             this->indices  = indices;
             this->textures = textures;
+            this->diffuseColor = diffuseColor;
 
             setupMesh();
         }
         void Draw(Shader &shader) {
             unsigned int diffuseNr = 1;
             unsigned int specularNr = 1;
-            for(unsigned int i = 0; i < textures.size(); i++)
-            {
+            for(unsigned int i = 0; i < textures.size(); i++) {
                 glActiveTexture(GL_TEXTURE0 + i); // activate proper texture unit before binding
                 // retrieve texture number (the N in diffuse_textureN)
                 std::string number;
@@ -53,6 +55,9 @@ class Mesh {
                 glBindTexture(GL_TEXTURE_2D, textures[i].id);
             }
             glActiveTexture(GL_TEXTURE0);
+
+            shader.setVec3("material.diffuseColor", diffuseColor);
+            shader.setBool("material.hasDiffuseTexture", textures.size() > 0);
 
             // draw mesh
             glBindVertexArray(VAO);

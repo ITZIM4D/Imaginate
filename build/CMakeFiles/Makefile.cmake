@@ -7,7 +7,7 @@ set(CMAKE_DEPENDS_GENERATOR "Unix Makefiles")
 # The top level Makefile was generated from the following files:
 set(CMAKE_MAKEFILE_DEPENDS
   "CMakeCache.txt"
-  "/Users/jared/Desktop/MyGameEngine/CMakeLists.txt"
+  "/Users/jared/Desktop/Imaginate/CMakeLists.txt"
   "CMakeFiles/4.2.0/CMakeCCompiler.cmake"
   "CMakeFiles/4.2.0/CMakeCXXCompiler.cmake"
   "CMakeFiles/4.2.0/CMakeSystem.cmake"
@@ -56,5 +56,5 @@ set(CMAKE_MAKEFILE_PRODUCTS
 
 # Dependency information for all targets:
 set(CMAKE_DEPEND_INFO_FILES
-  "CMakeFiles/myGameEngine.dir/DependInfo.cmake"
+  "CMakeFiles/Imaginate.dir/DependInfo.cmake"
   )
