@@ -33,3 +33,5 @@ This project is a basic game engine that I want to create my own games on and bu
 
 ## Features
 - Camera that moves around scene
+- GameObjects
+- Compatible with multiple object files

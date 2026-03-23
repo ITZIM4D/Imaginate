@@ -1,6 +1,8 @@
 cmake_minimum_required(VERSION 4.0.0)
 project(Imaginate)
 
+# Put fetches here?
+
 add_executable(Imaginate
     src/main.cpp
     src/Window.cpp
@@ -20,7 +22,7 @@ include_directories(
 target_link_directories(
     Imaginate PRIVATE 
     external/glfw/lib-universal
-    external/assimp/build/bin
+    external/assimp/bin
 )
 
 target_link_libraries(Imaginate PRIVATE
