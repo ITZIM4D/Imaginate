@@ -9,6 +9,7 @@ This project is a basic game engine that I want to create my own games on and bu
 
 ## Prerequisites
 - [GLFW](https://www.glfw.org/download)
+- [Lua](https://www.lua.org/download.html)
 
 ## Installation and Running
 

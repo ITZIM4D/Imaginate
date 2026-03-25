@@ -18,6 +18,7 @@
 #include <Camera.h>
 #include <Model.h>
 #include <GameObject.h>
+#include <ScriptManager.h>
 
 const int SCREEN_WIDTH  = 800;
 const int SCREEN_HEIGHT = 600;
@@ -39,6 +40,11 @@ float lastY = (float) SCREEN_WIDTH / 2;
 int main() {
     Window currWindow(SCREEN_WIDTH, SCREEN_HEIGHT);
     GLFWwindow* window = currWindow.getWindow();
+
+    // Script Manager
+    ScriptManager scriptManager;
+    scriptManager.loadScript("Hello World", "../assets/scripts/test.lua");
+    scriptManager.runScript("Hello World");
 
     // Mouse input options
     glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
