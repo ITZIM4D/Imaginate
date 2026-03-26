@@ -9,7 +9,6 @@ This project is a basic game engine that I want to create my own games on and bu
 
 ## Prerequisites
 - [GLFW](https://www.glfw.org/download)
-- [Lua](https://www.lua.org/download.html)
 
 ## Installation and Running
 
@@ -35,4 +34,18 @@ This project is a basic game engine that I want to create my own games on and bu
 ## Features
 - Camera that moves around scene
 - GameObjects
+- Scripts that are in Lua
 - Compatible with multiple object files
+
+## Tech Stack
+#### Core Language
+- **C++** — Main application and engine logic
+
+#### Graphics / Rendering
+- **OpenGL** — Low-level graphics API for rendering
+
+#### Scripting
+- **Lua** — Embedded scripting language for game/app logic
+
+#### Bindings / Integration
+- **Sol2** — C++ ↔ Lua binding library

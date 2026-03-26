@@ -60,8 +60,8 @@ int main() {
     // Enable depth testing
     glEnable(GL_DEPTH_TEST);
 
-    GameObject cube("../assets/models/cube/Cube.obj");
-    GameObject lightCube("../assets/models/cube/Cube.obj");
+    GameObject cube("../assets/models/cube/Cube.obj", scriptManager);
+    GameObject lightCube("../assets/models/cube/Cube.obj", scriptManager);
 
     // Model matrix to transform to world space (Because there is a model matrix for each object)
     glm::mat4 cubeModel = glm::mat4(1.0f);
@@ -80,6 +80,11 @@ int main() {
         
         // input
         processInput(window);
+
+        // Run scripts (May have to be done after shader stuff)
+        scriptManager.loadScript("test", "../assets/scripts/test.lua");
+        cube.addScript("test");
+        cube.runScripts();
 
         // Rendering
         glClearColor(0.44f, 0.82f, 0.88f, 1.0f);

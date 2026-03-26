@@ -24,9 +24,14 @@ class ScriptManager {
         bool loadScript(const std::string& name, const std::string& path);
 
         /**
-         * @brief Runs specified script
-         * 
-         * @param name Name of the script to be run
+         * @brief Executes a loaded Lua script with validation and error handling.
+         *
+         * Searches for the script by name in the internal container. If the script
+         * is not found or is invalid, an error message is printed and execution is
+         * aborted. If found, the script is invoked using sol::protected_function,
+         * and any runtime errors are captured and reported.
+         *
+         * @param name The identifier of the script to execute.
          */
         void runScript(const std::string& name);
     

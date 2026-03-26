@@ -3,6 +3,7 @@
 
 #include <Model.h>
 #include <math.h>
+#include <ScriptManager.h>
 
 /**
  * @class GameObject
@@ -12,9 +13,12 @@
 class GameObject {
     public:
         /**
-         * @brief Instantiates a model with the given path, a location of x: 0, y: 0, z: 0, a rotation of 0 degrees
+         * @brief Instantiates a model with default values
+         * 
+         * @param modelPath path to the model that is to be created
+         * @param scriptManager script manager for objects scripts
          */
-        GameObject(const char* modelPath);
+        GameObject(const char* modelPath, ScriptManager& scriptManager);
 
         /**
          * @brief Translates the model by a vec3 amount and sets the given matrix to that
@@ -84,6 +88,18 @@ class GameObject {
          */
         void Draw(Shader &shader);
 
+        /**
+         * @brief Adds a script to be tied to the object
+         * 
+         * @param name Name of the script to be added
+         */
+        void addScript(const std::string& name);
+
+        /**
+         * @brief Runs all scripts in the scripts vector
+         */
+        void runScripts();
+
     private:
         /******* Private Variables *******/
         GameObject* parent_;
@@ -91,7 +107,9 @@ class GameObject {
         glm::vec3 pos_; // The global position of the object
         glm::vec3 rotation_; // The current rotation of the object
         glm::vec3 scale_; // The current scale of the object
-
+        ScriptManager& scriptManager_;
+        std::vector<std::string> scripts_; // A vector of the scripts that the object has
+        
 };
 
 #endif

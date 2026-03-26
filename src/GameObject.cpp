@@ -1,6 +1,7 @@
 #include <GameObject.h>
 
-GameObject::GameObject(const char* modelPath) : model_(modelPath), pos_(glm::vec3(0)), rotation_(glm::vec3(0)), scale_(glm::vec3(1)) {};
+GameObject::GameObject(const char* modelPath, ScriptManager& scriptManager) : model_(modelPath), pos_(glm::vec3(0)),
+ rotation_(glm::vec3(0)), scale_(glm::vec3(1)), scriptManager_(scriptManager) {};
 
 void GameObject::translate(glm::mat4 &ModelMatrix, glm::vec3 translation) {
     pos_ += translation; // Update object position variable
@@ -32,5 +33,15 @@ void GameObject::scale(glm::mat4 &ModelMatrix, glm::vec3 scale_vector) {
 
 void GameObject::Draw(Shader &shader) {
     model_.Draw(shader);
+}
+
+void GameObject::addScript(const std::string& name) {
+    scripts_.push_back(name);
+}
+
+void GameObject::runScripts() {
+    for (auto i : scripts_) {
+        scriptManager_.runScript(i);
+    }
 }
 

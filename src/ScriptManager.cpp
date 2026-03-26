@@ -17,5 +17,20 @@ bool ScriptManager::loadScript(const std::string& name, const std::string& path)
 }
 
 void ScriptManager::runScript(const std::string& name) {
-    scripts_[name]();
+    auto it = scripts_.find(name);
+    if (it == scripts_.end()) {
+        std::cerr << "Script not found: " << name << std::endl;
+        return;
+    }
+
+    if (!it->second.valid()) {
+        std::cerr << "Invalid script: " << name << std::endl;
+        return;
+    }
+
+    sol::protected_function_result result = it->second();
+    if (!result.valid()) {
+        sol::error err = result;
+        std::cerr << "Runtime error: " << err.what() << std::endl;
+    }
 }
