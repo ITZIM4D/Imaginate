@@ -13,11 +13,16 @@ class Window {
     public:
         /**
          * @brief Creates a window and context
+         * 
+         * @param width Width of the window
+         * @param height Height of the window
          */
         Window(int width, int height);
 
         /**
          * @brief returns pointer to window
+         * 
+         * @returns Pointer to the window
          */
         GLFWwindow* getWindow();
 
@@ -27,6 +32,10 @@ class Window {
 
         /**
          * @brief callback when window changes size
+         * 
+         * @param window Pointer to the window being changed
+         * @param width New width of the window
+         * @param height New height of the window
          */
         static void framebuffer_size_callback(GLFWwindow* window, int width, int height);
     

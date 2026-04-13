@@ -31,6 +31,9 @@ add_executable(Imaginate
     src/ImageLoader.cpp
     src/GameObject.cpp
     src/ScriptManager.cpp
+    src/Engine.cpp
+    src/InputManager.cpp
+    src/Scene.cpp
 )
 
 include_directories(

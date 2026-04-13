@@ -18,7 +18,7 @@ class GameObject {
          * @param modelPath path to the model that is to be created
          * @param scriptManager script manager for objects scripts
          */
-        GameObject(const char* modelPath, ScriptManager& scriptManager);
+        GameObject(std::string modelPath, ScriptManager& scriptManager);
 
         /**
          * @brief Translates the model by a vec3 amount and sets the given matrix to that
@@ -65,7 +65,7 @@ class GameObject {
          * 
          * @returns The position of the object as a vec3
          */
-        glm::vec3 getPos() {return pos_;}
+        glm::vec3 getPos() const {return pos_;}
 
         /**
          * @brief Getter method for GameObject's rotation

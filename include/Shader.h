@@ -14,7 +14,7 @@ class Shader {
     public:
         GLuint ID;
 
-        Shader(const char* vertexPath, const char* fragmentPath) {
+        Shader(std::string vertexPath, std::string fragmentPath) {
             std::string vertexCode;
             std::string fragmentCode;
             std::ifstream vShaderFile;
@@ -25,8 +25,8 @@ class Shader {
 
             try {
                 // open files
-                vShaderFile.open(vertexPath);
-                fShaderFile.open(fragmentPath);
+                vShaderFile.open("../src/shaders/" + vertexPath);
+                fShaderFile.open("../src/shaders/" + fragmentPath);
                 std::stringstream vShaderStream, fShaderStream;
                 // read file's buffer contents into streams
                 vShaderStream << vShaderFile.rdbuf();

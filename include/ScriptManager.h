@@ -17,7 +17,7 @@ class ScriptManager {
          * @brief Loads script file
          * 
          * @param name Name of the script to be stored as
-         * @param path Path to the script
+         * @param path Path to the script with the scripts folder being the root
          * 
          * @returns A boolean of whether or not the script successfully loaded
          */

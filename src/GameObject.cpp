@@ -1,6 +1,6 @@
 #include <GameObject.h>
 
-GameObject::GameObject(const char* modelPath, ScriptManager& scriptManager) : model_(modelPath), pos_(glm::vec3(0)),
+GameObject::GameObject(std::string modelPath, ScriptManager& scriptManager) : model_(modelPath), pos_(glm::vec3(0)),
  rotation_(glm::vec3(0)), scale_(glm::vec3(1)), scriptManager_(scriptManager) {};
 
 void GameObject::translate(glm::mat4 &ModelMatrix, glm::vec3 translation) {

@@ -5,7 +5,7 @@ ScriptManager::ScriptManager() {
 }
 
 bool ScriptManager::loadScript(const std::string& name, const std::string& path) {
-    sol::load_result script = lua_.load_file(path);
+    sol::load_result script = lua_.load_file("../assets/scripts/" + path);
     if (script.valid()) {
         sol::protected_function function = script;
         scripts_[name] = function;

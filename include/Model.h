@@ -16,8 +16,13 @@ GLuint TextureFromFile(const char *path, const std::string &directory, bool gamm
 
 class Model {
     public:
-        Model(const char* path) {
-            loadModel(path);
+        /**
+         * @brief loads a model with the given path
+         * 
+         * @param path The path from the models folder to the object
+         */
+        Model(std::string path) {
+            loadModel("../assets/models/" + path);
         }
         void Draw(Shader &shader) {
             for (GLuint i = 0; i < meshes.size(); i++) {

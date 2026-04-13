@@ -1,1 +1,1 @@
-print("Hello World")
+math.randomseed(0)
