@@ -47,6 +47,7 @@ class Engine {
         std::shared_ptr<ScriptManager> scriptManager_;
         std::unordered_map<std::string, Scene> scenes_;
         std::unordered_map<std::string, Shader> shaders_;
+        Scene* currScene_;
 
         /**
          * @brief initial setup for the Engine (Runs Once)
@@ -73,7 +74,7 @@ class Engine {
          * 
          * @param scene Scene to be initialized
          */
-        void initScene(Scene scene);
+        void initScene(std::string sceneName);
 };
 
 #endif

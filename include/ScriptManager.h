@@ -3,6 +3,7 @@
 
 #define SOL_ALL_SAFETIES_ON 1
 #include <sol/sol.hpp>
+#include <InputManager.h>
 
 class ScriptManager {
     public:
@@ -11,7 +12,7 @@ class ScriptManager {
         /**
          * @brief Opens libraries to script and runs the script
          */
-        ScriptManager();
+        ScriptManager(std::shared_ptr<InputManager> inputManager);
 
         /**
          * @brief Loads script file
@@ -37,6 +38,23 @@ class ScriptManager {
     
     private:
         std::unordered_map<std::string, sol::protected_function> scripts_;
+        std::shared_ptr<InputManager> inputManager_;
+        
+        /**
+         * @brief Sets all of the lua functions
+         */
+        void setFunctions();
+
+        /**
+         * @brief Sets all of the lua enums
+         */
+        void setEnums();
+
+        /**
+         * @brief Sets all of the lua usertypes
+         */
+        void setUserTypes();
+
 };
 
 #endif

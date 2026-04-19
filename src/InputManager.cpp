@@ -54,4 +54,9 @@ void InputManager::mouse_callback(GLFWwindow* window, double xposIn, double ypos
 void InputManager::scroll_callback(GLFWwindow* window, double xoffset, double yoffset) {
     InputManager* self = static_cast<InputManager*>(glfwGetWindowUserPointer(window));
     self->camera_.ProcessMouseScroll(static_cast<float>(yoffset));
+} 
+
+bool InputManager::KeyIsDown(int keycode) {
+    return glfwGetKey(window_, keycode) == GLFW_PRESS;
+    
 }

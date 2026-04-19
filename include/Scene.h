@@ -21,28 +21,22 @@ class Scene {
         void addObject(std::string objectName, std::shared_ptr<GameObject> object, Shader shader);
 
         /**
-         * @brief Sets the model matrix of an object's shader
+         * @brief Sets a mat4 object
          * 
-         * @param modelMatrix the model matrix to set for the object
-         * @param objectName name of the object you want to set the matrix for 
+         * @param objectName name of the object you want to set the matrix for
+         * @param value value to set the uniform as
+         * @param uniformName name of the shader uniform that is being updated
          */
-        void setModelMatrix(glm::mat4 modelMatrix, std::string objectName);
+        void setMat4(std::string objectName, std::string uniformName, glm::mat4 value);
 
         /**
-         * @brief Sets the view matrix of an object 
+         * @brief sets vec3 object
          * 
-         * @param viewMatrix the view matrix to set for the object
-         * @param objectName name of the object you want to set the matrix for 
+         * @param objectName name of the object you want to set the vec3 for
+         * @param value value to set the uniform as
+         * @param uniformName name of the shader uniform that is being updated
          */
-        void setViewMatrix(glm::mat4 viewMatrix, std::string objectName);
-
-        /**
-         * @brief Sets the projection matrix of an object 
-         * 
-         * @param projectionMatrix the projection matrix to set for the object
-         * @param objectName name of the object you want to set the matrix for 
-         */
-        void setProjectionMatrix(glm::mat4 projectionMatrix, std::string objectName);
+        void setVec3(std::string objectName, std::string uniformName, glm::vec3 value);
 
         /**
          * @brief Draws all objects in the scene

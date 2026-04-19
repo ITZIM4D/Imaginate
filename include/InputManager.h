@@ -9,6 +9,7 @@ class InputManager {
     public:
         InputManager(GLFWwindow* window, Camera& camera, float& deltaTime, int screenWidth, int screenHeight);
         void processInput();
+        bool KeyIsDown(int keycode);
         static void mouse_callback(GLFWwindow* window, double xposIn, double yposIn);
         static void scroll_callback(GLFWwindow* window, double xoffset, double yoffset);
     private:

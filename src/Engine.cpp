@@ -6,11 +6,12 @@ Engine::Engine(int screenWidth, int screenHeight) : deltaTime_(0.0), lastFrame_(
         window_ = currWindow_->getWindow(); // GLFW window object (Context maybe?)
         camera_ = Camera(glm::vec3(0.0f, 0.0f, 3.0f));
         inputManager_ = std::make_shared<InputManager>(window_, camera_, deltaTime_, screenWidth_, screenHeight_);
-        scriptManager_ = std::make_shared<ScriptManager>();
+        scriptManager_ = std::make_shared<ScriptManager>(inputManager_);
         
         // TODO: This is the scene testing, not a final product
         Scene test;
         scenes_["Test"] = test;
+        initScene("Test");
 }
 
 void Engine::run() {
@@ -62,9 +63,9 @@ void Engine::update() {
     // Poll events and run scripts
     glfwPollEvents();
     // Run scripts (May have to be done after shader stuff)
-    // scriptManager_->loadScript("test", "test.lua");
-    // scenes_.addScript("test");
-    // cube.runScripts();
+    scriptManager_->loadScript("test", "test.lua");
+    currScene_->objects_.at("cube").object_->addScript("test");
+    currScene_->objects_.at("cube").object_->runScripts();
 
     // input
     inputManager_->processInput();
@@ -84,28 +85,19 @@ void Engine::render() {
     glm::mat4 projection = glm::mat4(1.0f);
     projection = glm::perspective(glm::radians(camera_.Zoom), ((float) screenWidth_ / (float) screenHeight_), 0.1f, 100.0f);
 
-    shaders_.at("defaultShader").use();
     // Send matrix uniforms to shader
-    shaders_.at("defaultShader").setVec3("viewPos", camera_.Position);
-    shaders_.at("defaultShader").setVec3("lightPos", lightPos);
-    shaders_.at("defaultShader").setVec3("lightColor", glm::vec3(1.0f));
-    shaders_.at("defaultShader").setMat4("model", glm::translate(glm::mat4(1.0f), scenes_["Test"].objects_.at("cube").object_->getPos()));
-    shaders_.at("defaultShader").setMat4("view", view);
-    shaders_.at("defaultShader").setMat4("projection", projection);
+    currScene_->setVec3("cube", "viewPos", camera_.Position);
+    currScene_->setVec3("cube", "lightPos", lightPos);
+    currScene_->setVec3("cube", "lightColor", glm::vec3(1.0f));
+    currScene_->setMat4("cube", "model", glm::translate(glm::mat4(1.0f), scenes_["Test"].objects_.at("cube").object_->getPos()));
+    currScene_->setMat4("cube", "view", view);
+    currScene_->setMat4("cube", "projection", projection);
 
-    shaders_.at("lightShader").use();
-    shaders_.at("lightShader").setMat4("model", glm::translate(glm::mat4(1.0f), scenes_["Test"].objects_.at("lightCube").object_->getPos()));
-    shaders_.at("lightShader").setMat4("view", view);
-    shaders_.at("lightShader").setMat4("projection", projection);
-
-    
+    currScene_->setMat4("lightCube", "model", glm::translate(glm::mat4(1.0f), scenes_["Test"].objects_.at("lightCube").object_->getPos()));
+    currScene_->setMat4("lightCube", "view", view);
+    currScene_->setMat4("lightCube", "projection", projection);  
 
     scenes_["Test"].drawScene();
-    
-    // lightShader.setMat4("model", lightModel);
-    // lightShader.setMat4("view", view);
-    // lightShader.setMat4("projection", projection);
-    // lightCube.Draw(lightShader);
 
     // Check and call events and swap buffers
     glfwSwapBuffers(window_);
@@ -115,6 +107,10 @@ void Engine::shutdown() {
     glfwTerminate();
 }
 
-void Engine::initScene(Scene scene) {
-
+void Engine::initScene(std::string sceneName) {
+    if (scenes_.find(sceneName) != scenes_.end()) {
+        currScene_ = &scenes_.at("Test");
+    } else {
+        std::cerr << "Scene: " << sceneName << " doesn\'t exist in scenes" << std::endl;
+    }
 }
