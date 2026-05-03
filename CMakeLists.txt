@@ -6,6 +6,8 @@ project(Imaginate)
 
 include(FetchContent)
 
+add_definitions(-DPROJECT_ROOT="${CMAKE_SOURCE_DIR}")
+
 FetchContent_Declare(
     lua
     GIT_REPOSITORY https://github.com/walterschell/Lua
@@ -25,6 +27,9 @@ FetchContent_Declare(
     )
 FetchContent_MakeAvailable(sol2)
 
+FetchContent_Declare(json URL https://github.com/nlohmann/json/releases/download/v3.12.0/json.tar.xz)
+FetchContent_MakeAvailable(json)
+
 add_executable(Imaginate
     src/main.cpp
     src/Window.cpp
@@ -35,6 +40,7 @@ add_executable(Imaginate
     src/Engine.cpp
     src/InputManager.cpp
     src/Scene.cpp
+    src/Game.cpp
 )
 
 include_directories(
@@ -56,6 +62,7 @@ target_link_libraries(Imaginate PRIVATE
     lua_static
     glfw3
     assimp
+    nlohmann_json::nlohmann_json
     "-framework Cocoa"
     "-framework IOKit"
     "-framework CoreFoundation"

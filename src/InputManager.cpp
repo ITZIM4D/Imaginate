@@ -1,4 +1,4 @@
-#include <InputManager.h>
+#include "InputManager.h"
 
 InputManager::InputManager(GLFWwindow* window, Camera& camera, float& deltaTime, int screenWidth, int screenHeight) : window_(window),
     camera_(camera), deltaTime_(deltaTime), firstMouse_(true), lastX_((float) screenWidth / 2),

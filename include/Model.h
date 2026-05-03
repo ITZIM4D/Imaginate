@@ -1,13 +1,13 @@
 #ifndef MODEL_H
 #define MODEL_H
 
-#include <Shader.h>
-#include <Mesh.h>
-#include <string>
+#include "Shader.h"
+#include "Mesh.h"
+#include "stb_image.h"
 
+#include <string>
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
-#include <stb_image.h>
 #include <assimp/Importer.hpp>
 #include <assimp/scene.h>
 #include <assimp/postprocess.h>
@@ -22,7 +22,8 @@ class Model {
          * @param path The path from the models folder to the object
          */
         Model(std::string path) {
-            loadModel("../assets/models/" + path);
+            std::string fullPath = std::string(PROJECT_ROOT) + "/assets/models/" + path;
+            loadModel(fullPath);
         }
         void Draw(Shader &shader) {
             for (GLuint i = 0; i < meshes.size(); i++) {

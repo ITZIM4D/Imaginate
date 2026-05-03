@@ -1,14 +1,16 @@
 #ifndef ENGINE_H
 #define ENGINE_H
 
-#include <Camera.h>
-#include <Window.h>
-#include <InputManager.h>
-#include <ScriptManager.h>
-#include <Scene.h>
-#include <stb_image.h>
-#include <Shader.h>
-#include <GameObject.h>
+#include "Camera.h"
+#include "Window.h"
+#include "InputManager.h"
+#include "ScriptManager.h"
+#include "Scene.h"
+#include "stb_image.h"
+#include "Shader.h"
+#include "GameObject.h"
+
+class Game;
 
 class Engine {
     public:
@@ -21,20 +23,29 @@ class Engine {
         Engine(int screenWidth, int screenHeight);
         
         /**
+         * @brief initial setup for the Engine (Runs Once)
+         */
+        void init();
+
+        /**
          * @brief Runs the engine
+         * 
+         * @param game The game to get the update loop from for gameplay logic
          */
-        void run();
+        void run(Game& game);
 
         /**
-         * @brief Returns the width of the screen
+         * @brief Initializes the specified scene
+         * 
+         * @param scene Scene to be initialized
          */
+        void initScene(std::string sceneName);
+
         int getScreenWidth() {return screenWidth_;}
-
-        /**
-         * @brief Returns the height of the screen
-         */
         int getScreenHeight() {return screenHeight_;}
-
+        std::shared_ptr<ScriptManager> getScriptManager() {return scriptManager_;}
+        std::unordered_map<std::string, Scene>& getScenes() {return scenes_;}
+        
     private:
         float deltaTime_; // Change in time
         float lastFrame_; // Time of last frame
@@ -50,11 +61,6 @@ class Engine {
         Scene* currScene_;
 
         /**
-         * @brief initial setup for the Engine (Runs Once)
-         */
-        void init();
-
-        /**
          * @brief Updates everything once per frame
          */
         void update();
@@ -68,13 +74,6 @@ class Engine {
          * @brief Does everything necessary for shutting down
          */
         void shutdown();
-
-        /**
-         * @brief Initializes the specified scene
-         * 
-         * @param scene Scene to be initialized
-         */
-        void initScene(std::string sceneName);
 };
 
 #endif

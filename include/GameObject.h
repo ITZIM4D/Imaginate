@@ -1,9 +1,10 @@
 #ifndef GAMEOBJECT_H
 #define GAMEOBJECT_H
 
-#include <Model.h>
 #include <math.h>
-#include <ScriptManager.h>
+
+#include "Model.h"
+#include "ScriptManager.h"
 
 /**
  * @class GameObject
@@ -99,6 +100,11 @@ class GameObject {
          * @brief Runs all scripts in the scripts vector
          */
         void runScripts();
+
+        /**
+         * @brief Returns the model matrix of the object
+         */
+        glm::mat4 getModelMatrix();
 
     private:
         /******* Private Variables *******/

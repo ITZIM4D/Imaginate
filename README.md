@@ -1,5 +1,5 @@
 # Imaginate
-This project is a basic game engine that I want to create my own games on and build off of. Currently written only for Mac but going to be create windows implementation in the future.
+This project is a basic game engine that I want to create my own games on and build off of. Currently written only for Mac but going to be create windows implementation in the future. To create a game you modify the Game.cpp file, this will 
 
 ## Table of Contents
 -[Prerequisites](#prerequisites)

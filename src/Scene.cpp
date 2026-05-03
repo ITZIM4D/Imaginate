@@ -1,4 +1,4 @@
-#include <Scene.h>
+#include "Scene.h"
 
 void Scene::addObject(std::string objectName, std::shared_ptr<GameObject> object, Shader shader) {
     Object tempObject = {object, shader};
@@ -25,9 +25,28 @@ void Scene::setVec3(std::string objectName, std::string uniformName, glm::vec3 v
     }
 }
 
-void Scene::drawScene() {
-    for (auto i : objects_) {
-        i.second.shader_.use();
-        i.second.object_->Draw(i.second.shader_);
+void Scene::render(Camera& camera, int screenWidth, int screenHeight) {
+    glm::mat4 view = camera.GetViewMatrix();
+    glm::mat4 projection = glm::perspective(glm::radians(camera.Zoom), ((float) screenWidth / (float) screenHeight), 0.1f, 100.0f);
+
+    for (auto& [name, obj] : objects_) {
+        Shader& shader = obj.shader_;
+        shader.use();
+
+        // Core matrics
+        shader.setMat4("view", view);
+        shader.setMat4("projection", projection);
+        shader.setMat4("model", obj.object_->getModelMatrix());
+        shader.setVec3("lightPos", lightPos_);
+
+        shader.setVec3("viewPos", camera.Position);
+
+        obj.object_->Draw(shader);
+    }
+}
+
+void Scene::runScripts() {
+    for (auto& [name, obj] : objects_) {
+        obj.object_->runScripts();
     }
 }

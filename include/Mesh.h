@@ -3,10 +3,11 @@
 
 #include <glm/glm.hpp>
 #include <GLFW/glfw3.h>
-#include <stb_image.h>
-#include <Shader.h>
 #include <string>
 #include <vector>
+
+#include "stb_image.h"
+#include "Shader.h"
 
 struct Vertex {
     glm::vec3 Position;

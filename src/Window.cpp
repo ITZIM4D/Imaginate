@@ -1,8 +1,5 @@
-#include <Window.h>
+#include "Window.h"
 
-/**
- * 
- */
 Window::Window(int width, int height) {
     glfwInit();
     
@@ -29,16 +26,10 @@ Window::Window(int width, int height) {
     glfwSetFramebufferSizeCallback(window, framebuffer_size_callback); 
 }
 
-/**
- * 
- */
 GLFWwindow* Window::getWindow() {
     return window;
 }
 
-/**
- * 
- */
 void Window::framebuffer_size_callback(GLFWwindow* window, int width, int height) {
     glViewport(0, 0, width, height);
 }

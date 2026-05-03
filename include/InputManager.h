@@ -2,7 +2,7 @@
 #define INPUTMANAGER_H
 
 #include <iostream>
-#include <Camera.h>
+#include "Camera.h"
 #include <GLFW/glfw3.h>
 
 class InputManager {

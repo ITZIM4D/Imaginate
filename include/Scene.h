@@ -1,7 +1,7 @@
 #ifndef SCENE_H
 #define SCENE_H
 
-#include <GameObject.h>
+#include "GameObject.h"
 
 struct Object {
     std::shared_ptr<GameObject> object_;
@@ -39,12 +39,29 @@ class Scene {
         void setVec3(std::string objectName, std::string uniformName, glm::vec3 value);
 
         /**
-         * @brief Draws all objects in the scene
+         * @brief sets the only light position (Only the one currently)
+         * 
+         * @param newLightPos The new position to change the light to being
          */
-        void drawScene();
+        void setLightPos(glm::vec3 newLightPos) {lightPos_ = newLightPos;}
+
+        /**
+         * @brief Renders the current scene
+         * 
+         * @param camera The camera object that is being used
+         * @param screenWidth The size of the x axis of the screen
+         * @param screenHeight The size of the y axis of the screen
+         */
+        void render(Camera& camera, int screenWidth, int screenHeight);
+
+        /**
+         * @brief Runs all scripts in the scene
+         */
+        void runScripts();
 
     private:
         std::unordered_map<std::string, Shader> shaders_;
+        glm::vec3 lightPos_;
         
 };
 

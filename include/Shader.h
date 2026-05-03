@@ -25,8 +25,10 @@ class Shader {
 
             try {
                 // open files
-                vShaderFile.open("../src/shaders/" + vertexPath);
-                fShaderFile.open("../src/shaders/" + fragmentPath);
+                std::string fullVertexPath = std::string(PROJECT_ROOT) + "/src/shaders/" + vertexPath;
+                std::string fullFragmentPath = std::string(PROJECT_ROOT) + "/src/shaders/" + fragmentPath;
+                vShaderFile.open(fullVertexPath);
+                fShaderFile.open(fullFragmentPath);
                 std::stringstream vShaderStream, fShaderStream;
                 // read file's buffer contents into streams
                 vShaderStream << vShaderFile.rdbuf();

@@ -1,4 +1,4 @@
-#include <GameObject.h>
+#include "GameObject.h"
 
 GameObject::GameObject(std::string modelPath, ScriptManager& scriptManager) : model_(modelPath), pos_(glm::vec3(0)),
  rotation_(glm::vec3(0)), scale_(glm::vec3(1)), scriptManager_(scriptManager) {};
@@ -43,5 +43,22 @@ void GameObject::runScripts() {
     for (auto i : scripts_) {
         scriptManager_.runScript(i);
     }
+}
+
+glm::mat4 GameObject::getModelMatrix() {
+    glm::mat4 model = glm::mat4(1.0f);
+
+    // Translation
+    model = glm::translate(model, pos_);
+
+    // Rotation (XYZ order)
+    model = glm::rotate(model, glm::radians(rotation_.x), glm::vec3(1, 0, 0));
+    model = glm::rotate(model, glm::radians(rotation_.y), glm::vec3(0, 1, 0));
+    model = glm::rotate(model, glm::radians(rotation_.z), glm::vec3(0, 0, 1));
+
+    // Scale
+    model = glm::scale(model, scale_);
+
+    return model;
 }
 

@@ -1,4 +1,4 @@
-#include <ScriptManager.h>
+#include "ScriptManager.h"
 
 ScriptManager::ScriptManager(std::shared_ptr<InputManager> inputManager) : inputManager_(inputManager) {
     lua_.open_libraries(sol::lib::base, sol::lib::math, sol::lib::table);
@@ -8,7 +8,8 @@ ScriptManager::ScriptManager(std::shared_ptr<InputManager> inputManager) : input
 }
 
 bool ScriptManager::loadScript(const std::string& name, const std::string& path) {
-    sol::load_result script = lua_.load_file("../assets/scripts/" + path);
+    std::string fullPath = std::string(PROJECT_ROOT) + "/assets/scripts/" + path;
+    sol::load_result script = lua_.load_file(fullPath);
     if (script.valid()) {
         sol::protected_function function = script;
         scripts_[name] = function;

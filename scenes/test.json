@@ -1,0 +1,23 @@
+{
+    "sceneName": "Test",
+    "objects": [
+        {
+            "objectName": "cube",
+            "objectPath": "cube/Cube.obj",
+            "shaderName": "defaultShader",
+            "position": [0.0, -2.0, -3.0],
+            "rotation": [0.0, 0.0, 0.0],
+            "scale": [1.0, 1.0, 1.0]
+        },
+
+        {
+            "objectName": "lightCube",
+            "objectPath": "cube/Cube.obj",
+            "shaderName": "lightShader",
+            "position": [3.0, 2.0, 0.0],
+            "rotation": [0.0, 0.0, 0.0],
+            "scale": [0.2, 0.2, 0.2]
+        }
+    ],
+    "lightPos": [3.0, 2.0, 0.0]
+}
