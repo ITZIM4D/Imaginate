@@ -36,6 +36,7 @@ This project is a basic game engine that I want to create my own games on and bu
 - GameObjects
 - Scripts that are in Lua
 - Compatible with multiple object files
+- Scene creations through JSON parsing
 
 ## Tech Stack
 #### Core Language
@@ -49,3 +50,6 @@ This project is a basic game engine that I want to create my own games on and bu
 
 #### Bindings / Integration
 - **Sol2** — C++ ↔ Lua binding library
+
+#### Data / Scene Format
+- **JSON** — Used for scene definitions, configuration, and data serialization
