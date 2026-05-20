@@ -6,6 +6,11 @@
 #include "Model.h"
 #include "ScriptManager.h"
 
+struct ScriptInstance {
+    sol::environment env;
+    sol::function update;
+};
+
 /**
  * @class GameObject
  * 
@@ -13,6 +18,15 @@
  */
 class GameObject {
     public:
+        /******* Public Variables *******/
+        GameObject* parent_;
+        Model model_;
+        glm::vec3 pos_; // The global position of the object
+        glm::vec3 rotation_; // The current rotation of the object
+        glm::vec3 scale_; // The current scale of the object
+        std::vector<ScriptInstance> scriptInstances_;
+        std::vector<std::string> scripts_;
+        
         /**
          * @brief Instantiates a model with default values
          * 
@@ -107,15 +121,7 @@ class GameObject {
         glm::mat4 getModelMatrix();
 
     private:
-        /******* Private Variables *******/
-        GameObject* parent_;
-        Model model_;
-        glm::vec3 pos_; // The global position of the object
-        glm::vec3 rotation_; // The current rotation of the object
-        glm::vec3 scale_; // The current scale of the object
         ScriptManager& scriptManager_;
-        std::vector<std::string> scripts_; // A vector of the scripts that the object has
-        
 };
 
 #endif

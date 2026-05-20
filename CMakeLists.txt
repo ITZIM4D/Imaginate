@@ -2,11 +2,11 @@ cmake_minimum_required(VERSION 4.0.0)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_FLAGS_DEBUG "-g -O0")
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 project(Imaginate)
 
-include(FetchContent)
 
-add_definitions(-DPROJECT_ROOT="${CMAKE_SOURCE_DIR}")
+include(FetchContent)
 
 FetchContent_Declare(
     lua
@@ -41,6 +41,10 @@ add_executable(Imaginate
     src/InputManager.cpp
     src/Scene.cpp
     src/Game.cpp
+)
+
+target_compile_definitions(Imaginate PRIVATE
+    PROJECT_ROOT=\"${CMAKE_SOURCE_DIR}\"
 )
 
 include_directories(

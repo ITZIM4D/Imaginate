@@ -10,8 +10,8 @@ struct Object {
 
 class Scene {
     public:
-        // TODO: make objects private in the future
         std::unordered_map<std::string, Object> objects_;
+
         /**
          * @brief Adds an object to the scene
          * 
@@ -56,8 +56,10 @@ class Scene {
 
         /**
          * @brief Runs all scripts in the scene
+         * 
+         * @param scriptManager The script manager that has the scripts to be run
          */
-        void runScripts();
+        void runScripts(ScriptManager& scriptManager);
 
     private:
         std::unordered_map<std::string, Shader> shaders_;

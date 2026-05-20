@@ -45,8 +45,8 @@ void Scene::render(Camera& camera, int screenWidth, int screenHeight) {
     }
 }
 
-void Scene::runScripts() {
-    for (auto& [name, obj] : objects_) {
-        obj.object_->runScripts();
+void Scene::runScripts(ScriptManager& scriptManager) {
+    for (auto& obj : objects_) {
+        scriptManager.updateScript(*obj.second.object_);
     }
 }

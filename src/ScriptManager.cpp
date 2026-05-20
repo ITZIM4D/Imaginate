@@ -1,4 +1,5 @@
 #include "ScriptManager.h"
+#include "GameObject.h"
 
 ScriptManager::ScriptManager(std::shared_ptr<InputManager> inputManager) : inputManager_(inputManager) {
     lua_.open_libraries(sol::lib::base, sol::lib::math, sol::lib::table);
@@ -9,10 +10,9 @@ ScriptManager::ScriptManager(std::shared_ptr<InputManager> inputManager) : input
 
 bool ScriptManager::loadScript(const std::string& name, const std::string& path) {
     std::string fullPath = std::string(PROJECT_ROOT) + "/assets/scripts/" + path;
-    sol::load_result script = lua_.load_file(fullPath);
+    sol::load_result script = lua_.load_file(fullPath);     
     if (script.valid()) {
-        sol::protected_function function = script;
-        scripts_[name] = function;
+        scripts_[name] = script;
         return true;
     } else {
         std::cerr << "Failed to load script: " << sol::error(script).what() << std::endl;
@@ -20,24 +20,36 @@ bool ScriptManager::loadScript(const std::string& name, const std::string& path)
     }
 }
 
-void ScriptManager::runScript(const std::string& name) {
+void ScriptManager::runScript(const std::string& name, GameObject& obj) {
     auto it = scripts_.find(name);
     if (it == scripts_.end()) {
         std::cerr << "Script not found: " << name << std::endl;
         return;
     }
+    
+    sol::environment env(lua_, sol::create, lua_.globals());
+    env["self"] = &obj; 
 
     if (!it->second.valid()) {
         std::cerr << "Invalid script: " << name << std::endl;
         return;
     }
 
-    sol::protected_function_result result = it->second();
+    sol::protected_function_result result = it->second(env);
     if (!result.valid()) {
         sol::error err = result;
         std::cerr << "Runtime error: " << err.what() << std::endl;
     }
 
+    // Call update()
+    sol::function update = env["update"];
+    if (update.valid()) {
+        sol::protected_function_result updateResult = update();
+        if (!updateResult.valid()) {
+            sol::error err = updateResult;
+            std::cerr << "Update error: " << err.what() << std::endl;
+        }
+    }
 }
 
 void ScriptManager::setFunctions() {
@@ -48,7 +60,11 @@ void ScriptManager::setFunctions() {
 
 void ScriptManager::setEnums() {
     lua_.new_enum<int>("KEYBOARD", {
-        {"SPACE", GLFW_KEY_SPACE}
+        {"SPACE", GLFW_KEY_SPACE},
+        {"W", GLFW_KEY_W},
+        {"A", GLFW_KEY_A},
+        {"S", GLFW_KEY_S},
+        {"D", GLFW_KEY_D}
     });
 }
 
@@ -66,4 +82,47 @@ void ScriptManager::setUserTypes() {
             [](float f, const glm::vec3& v1) -> glm::vec3 {return f * v1;}
         )
     );
+
+    lua_.new_usertype<GameObject>("GameObject",
+        "position", &GameObject::pos_,
+        "rotation", &GameObject::rotation_,
+        "scale", &GameObject::scale_
+    );
+}
+
+void ScriptManager::attachScript(const std::string& name, GameObject &obj) {
+    auto it = scripts_.find(name);
+    if (it == scripts_.end()) {
+        std::cerr << "Script not found: " << name << std::endl;
+        return;
+    }
+
+    sol::environment env(lua_, sol::create, lua_.globals());
+    env["self"] = &obj;
+
+    // Run script
+    sol::protected_function_result result = it->second(env);
+    if (!result.valid()) {
+        sol::error err = result;
+        std::cerr << "Runtime error: " << err.what() << std::endl;
+        return;
+    }
+
+    // Store in object
+    ScriptInstance instance;
+    instance.env = env;
+    instance.update = env["update"];
+    obj.scriptInstances_.push_back(std::move(instance));
+}
+
+void ScriptManager::updateScript(GameObject& obj) {
+    for (auto& script : obj.scriptInstances_) {
+        if (script.update.valid()) {
+            sol::protected_function_result result = script.update(&obj);
+            if (!result.valid()) {
+                sol::error err = result;
+                std::cerr << "Update error: " << err.what() << std::endl;
+            }
+        }
+    }
 }

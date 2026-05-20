@@ -6,6 +6,8 @@
 
 #include "InputManager.h"
 
+class GameObject;
+
 class ScriptManager {
     public:
         sol::state lua_;
@@ -35,7 +37,22 @@ class ScriptManager {
          *
          * @param name The identifier of the script to execute.
          */
-        void runScript(const std::string& name);
+        void runScript(const std::string& name, GameObject& obj);
+
+        /**
+         * @brief Attaches the script to the object
+         *
+         * @param name The identifier of the script to attach
+         * @param obj A reference to the object that is having the script attached to it
+         */
+        void attachScript(const std::string& name, GameObject& obj);
+
+        /**
+         * @brief Runs every frame and calls the scripts update function
+         * 
+         * @param obj The object that has the scripts being updated
+         */
+        void updateScript(GameObject& obj);
     
     private:
         std::unordered_map<std::string, sol::protected_function> scripts_;
@@ -55,6 +72,11 @@ class ScriptManager {
          * @brief Sets all of the lua usertypes
          */
         void setUserTypes();
+
+        /**
+         * @brief Exposes external variables to the lua scripts
+         */
+        void setExternalVariables();
 
 };
 

@@ -40,9 +40,7 @@ void GameObject::addScript(const std::string& name) {
 }
 
 void GameObject::runScripts() {
-    for (auto i : scripts_) {
-        scriptManager_.runScript(i);
-    }
+    scriptManager_.updateScript(*this);
 }
 
 glm::mat4 GameObject::getModelMatrix() {

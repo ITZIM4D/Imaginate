@@ -5,8 +5,8 @@ InputManager::InputManager(GLFWwindow* window, Camera& camera, float& deltaTime,
     lastY_((float) screenHeight / 2) {
     // Mouse input options
     glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
-    glfwSetCursorPosCallback(window, mouse_callback);
-    glfwSetScrollCallback(window, scroll_callback);
+    // glfwSetCursorPosCallback(window, mouse_callback);
+    // glfwSetScrollCallback(window, scroll_callback);
     glfwSetWindowUserPointer(window_, this);
 }
 
@@ -16,45 +16,45 @@ void InputManager::processInput() {
         glfwSetWindowShouldClose(window_, true);
     }
 
-    // Move using WASD
-    if (glfwGetKey(window_, GLFW_KEY_W) == GLFW_PRESS) {
-        camera_.ProcessKeyboard(FORWARD, deltaTime_);
-    }
-    if (glfwGetKey(window_, GLFW_KEY_S) == GLFW_PRESS) {
-        camera_.ProcessKeyboard(BACKWARD, deltaTime_);
-    }
-    if (glfwGetKey(window_, GLFW_KEY_A) == GLFW_PRESS) {
-        camera_.ProcessKeyboard(LEFT, deltaTime_);
-    }
-    if (glfwGetKey(window_, GLFW_KEY_D) == GLFW_PRESS) {
-        camera_.ProcessKeyboard(RIGHT, deltaTime_);
-    }
+    // // Move using WASD
+    // if (glfwGetKey(window_, GLFW_KEY_W) == GLFW_PRESS) {
+    //     camera_.ProcessKeyboard(FORWARD, deltaTime_);
+    // }
+    // if (glfwGetKey(window_, GLFW_KEY_S) == GLFW_PRESS) {
+    //     camera_.ProcessKeyboard(BACKWARD, deltaTime_);
+    // }
+    // if (glfwGetKey(window_, GLFW_KEY_A) == GLFW_PRESS) {
+    //     camera_.ProcessKeyboard(LEFT, deltaTime_);
+    // }
+    // if (glfwGetKey(window_, GLFW_KEY_D) == GLFW_PRESS) {
+    //     camera_.ProcessKeyboard(RIGHT, deltaTime_);
+    // }
 }
 
-void InputManager::mouse_callback(GLFWwindow* window, double xposIn, double yposIn) {
-    InputManager* self = static_cast<InputManager*>(glfwGetWindowUserPointer(window));
-    float xpos = static_cast<float>(xposIn);
-    float ypos = static_cast<float>(yposIn);
+// void InputManager::mouse_callback(GLFWwindow* window, double xposIn, double yposIn) {
+//     InputManager* self = static_cast<InputManager*>(glfwGetWindowUserPointer(window));
+//     float xpos = static_cast<float>(xposIn);
+//     float ypos = static_cast<float>(yposIn);
 
-    if (self->firstMouse_) {
-        self->lastX_ = xpos;
-        self->lastY_ = ypos;
-        self->firstMouse_ = false;
-    }
+//     if (self->firstMouse_) {
+//         self->lastX_ = xpos;
+//         self->lastY_ = ypos;
+//         self->firstMouse_ = false;
+//     }
 
-    float xoffset = xpos - self->lastX_;
-    float yoffset = self->lastY_ - ypos; // reversed since y-coordinates go from bottom to top
+//     float xoffset = xpos - self->lastX_;
+//     float yoffset = self->lastY_ - ypos; // reversed since y-coordinates go from bottom to top
 
-    self->lastX_ = xpos;
-    self->lastY_ = ypos;
+//     self->lastX_ = xpos;
+//     self->lastY_ = ypos;
 
-    self->camera_.ProcessMouseMovement(xoffset, yoffset);
-}
+//     self->camera_.ProcessMouseMovement(xoffset, yoffset);
+// }
 
-void InputManager::scroll_callback(GLFWwindow* window, double xoffset, double yoffset) {
-    InputManager* self = static_cast<InputManager*>(glfwGetWindowUserPointer(window));
-    self->camera_.ProcessMouseScroll(static_cast<float>(yoffset));
-} 
+// void InputManager::scroll_callback(GLFWwindow* window, double xoffset, double yoffset) {
+//     InputManager* self = static_cast<InputManager*>(glfwGetWindowUserPointer(window));
+//     self->camera_.ProcessMouseScroll(static_cast<float>(yoffset));
+// } 
 
 bool InputManager::KeyIsDown(int keycode) {
     return glfwGetKey(window_, keycode) == GLFW_PRESS;

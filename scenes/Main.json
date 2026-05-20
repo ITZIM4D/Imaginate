@@ -1,0 +1,26 @@
+{
+    "sceneName": "Main",
+    "objects": [
+        {
+            "objectName": "Cat",
+            "objectPath": "Cat/12221_Cat_v1_l3.obj",
+            "shaderName": "defaultShader",
+            "scripts": ["bird.lua"],
+            "position": [-0.5, 0.5, 0.0],
+            "rotation": [270.0, 0.0, 90.0],
+            "scale": [0.005, 0.005, 0.005]
+        },
+
+        {
+            "objectName": "Cube",
+            "objectPath": "Cube/Cube.obj",
+            "shaderName": "defaultShader",
+            "scripts": [""],
+            "position": [0.0, 0.2, 0.0],
+            "rotation": [0.0, 0.0, 0.0],
+            "scale": [0.02, 0.02, 0.02]
+        }
+    ],
+    "lightPos": [3.0, 2.0, 2.0],
+    "scripts": ["bird.lua"]
+}

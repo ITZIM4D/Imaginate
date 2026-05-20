@@ -11,8 +11,15 @@
 
 class Engine;
 
+// Struct to store variables specific to the game
+struct GameVars {
+    int score = 0;
+};
+
 class Game {
     public:
+        GameVars gameVars;
+
         Game(Engine& engine);
         void init();
         void run();
@@ -29,7 +36,6 @@ class Game {
         void setActiveScene(std::string sceneName);
         void setupScenes();
         void setupShaders();
-        void setupScripts();
 };
 
 #endif

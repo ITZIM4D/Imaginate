@@ -9,7 +9,6 @@ Game::Game(Engine& engine) : engine_(engine), scriptManager_ (engine.getScriptMa
 
 void Game::init() {
     // Setup methods
-    setupScripts();
     setupShaders();
     setupScenes();
 
@@ -39,6 +38,10 @@ void Game::setupScenes() {
             // Create scene with name
             scenes_.try_emplace(json["sceneName"]);
 
+            for (auto script : json["scripts"]) {
+                scriptManager_->loadScript(script, script);
+            }
+
             // For each object
             for (auto object : json["objects"]) {
                 // Create variables
@@ -53,7 +56,13 @@ void Game::setupScenes() {
                 } else {
                     shaderName = object["shaderName"];
                 }
+
                 GameObject gameObject(object["objectPath"], *engine_.getScriptManager());
+
+                for (auto script : object["scripts"]) {
+                    if (script != "") scriptManager_->attachScript(script, gameObject);
+                }
+                
                 scenes_.at(json["sceneName"]).addObject(object["objectName"], std::make_shared<GameObject>(gameObject), shaders_.at(shaderName));             
                 
                 x = json["lightPos"][0];
@@ -85,7 +94,6 @@ void Game::setupScenes() {
                     model = glm::mat4(1.0f);
                     scenes_.at(json["sceneName"]).objects_.at(object["objectName"]).object_->scale(model, glm::vec3(x, y, z));
                 }
-
             }
         } catch (const nlohmann::json::parse_error& e) {
             std::cerr << "JSON parse error in " << dirEntry.path() << ": " << e.what() << std::endl;
@@ -93,10 +101,7 @@ void Game::setupScenes() {
     }
 
     // Set initial scene
-    setActiveScene("Test");
-
-    // Add scripts to objects
-    activeScene_->objects_.at("cube").object_->addScript("bird");
+    setActiveScene("Main");
 }
 
 void Game::setupShaders() {
@@ -111,16 +116,23 @@ void Game::setupShaders() {
     }
 }
 
-void Game::setupScripts() {
-    scriptManager_->loadScript("bird", "bird.lua");
-}
-
 void Game::update(float deltaTime) {
-    activeScene_->runScripts();
+    activeScene_->runScripts(*scriptManager_);
     deltaTime_ = deltaTime;
     // Game logic here
+    glm::vec3 catPos = activeScene_->objects_.at("Cat").object_->getPos();
+    glm::vec3 cubePos = activeScene_->objects_.at("Cube").object_->getPos();
+
+    std::cout << gameVars.score << std::endl;
+
+    if((abs(catPos.x - cubePos.x) < 0.15) && (abs(catPos.y - cubePos.y) < 0.15)) {
+        gameVars.score += 1;
+        activeScene_->objects_.at("Cube").object_->pos_ = glm::vec3((float)(rand()) / (float)(RAND_MAX), (float)(rand()) / (float)(RAND_MAX), 0);
+    };
 }
 
 void Game::run() {
     engine_.run(*this);
 }
+
+
